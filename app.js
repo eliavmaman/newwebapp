@@ -1,6 +1,6 @@
 var express = require('express'),
   path = require('path'),
-  favicon = require('serve-favicon'),
+//favicon = require('serve-favicon'),
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
@@ -21,7 +21,7 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 
-var db = mongoose.connect('mongodb://localhost/nodewebapp');
+var db = mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/nodewebapp');
 //var db = mongoose.createConnection('mongodb://localhost/nodewebapp');
 //var User = db.model('user');
 
