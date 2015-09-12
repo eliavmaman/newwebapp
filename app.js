@@ -9,6 +9,7 @@ var express = require('express'),
   User = require('./model/user'),
   routes = require('./routes/index'),
   users = require('./routes/users');
+var cors = require('cors')
 
 var app = express();
 
@@ -27,6 +28,7 @@ var db = mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/nodew
 
 app.set('db', db);
 //app.use(allowCrossDomain);
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -35,19 +37,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
-app.get('/', function(req, res, next) {
-  // Handle the get for this route
-});
-
-app.post('/', function(req, res, next) {
-  // Handle the post for this route
-});
+//app.all('/', function(req, res, next) {
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//  next();
+//});
+//
+//app.get('/', function(req, res, next) {
+//  // Handle the get for this route
+//});
+//
+//app.post('/', function(req, res, next) {
+//  // Handle the post for this route
+//});
 
 
 app.post('/login', function (req, res, next) {
