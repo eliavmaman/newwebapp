@@ -26,7 +26,7 @@ var db = mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/nodew
 //var User = db.model('user');
 
 app.set('db', db);
-app.use(allowCrossDomain);
+//app.use(allowCrossDomain);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
